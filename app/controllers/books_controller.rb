@@ -21,6 +21,12 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.order('created_at desc')
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @books }
+      format.json { render :json => @books }
+    end
+
   end
 
   def destroy
